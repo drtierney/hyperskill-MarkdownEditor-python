@@ -16,6 +16,12 @@ def print_lines():
     print("".join(lines))
 
 
+def output_lines():
+    file = open("output.md", "w")
+    file.writelines(lines)
+    file.close()
+
+
 def plain_format(txt):
     return txt
 
@@ -76,7 +82,7 @@ while not done:
             lines.append(link_format(label, url))
         if command == "header":
             level = int(input("Level: "))
-            while not (level > 1 or not (level < 6)):
+            while not (level >= 1 or not (level <= 6)):
                 print("The level should be within the range of 1 to 6")
                 level = int(input("Level: "))
             text = input("- Text: ")
@@ -93,3 +99,5 @@ while not done:
         print_lines()
     else:
         print("Unknown formatting type or command. Please try again")
+
+output_lines()
